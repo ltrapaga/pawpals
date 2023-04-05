@@ -1,5 +1,7 @@
 const { ApolloServer } = require('apollo-server');
 
+const typeDefs = require('./schemas/typeDefs');
+const resolvers = require('./schemas/resolvers ');
 const { MONGODB } = require('./config/connection');
 
 const PORT = process.env.port || 3001;

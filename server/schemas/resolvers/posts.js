@@ -58,5 +58,24 @@ module.exports = {
         throw new Error(err);
       }
     },
+    async likePost(_, { postId }, context) {
+      const { username } = authMiddleware(context);
+      const post = await Post.findById(postId);
+      if (post) {
+        // If a `like` already exists because the userpreviously liked the same post
+        if (post.likes.find((like) => like.username === username)) {
+          // Then unlike that post
+          post.likes = post.likes.filter((like) => like.username !== username);
+        } else {
+          // Else, like the post by pushing to `likes` array in Post model
+          post.likes.push({
+            username,
+            createdAt: new Date().toISOString(),
+          });
+        }
+        await post.save();
+        return post;
+      } else throw new UserInputError("No post found with that ID");
+    },
   },
 };

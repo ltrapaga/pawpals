@@ -19,8 +19,8 @@ const postSchema = new Schema({
   ],
   user: {
     type: Schema.Types.ObjectId,
-    ref: 'users'
+    ref: 'user'
   }
 });
 
-module.exports = model('Post', postSchema);
+module.exports = model('post', postSchema);

@@ -9,6 +9,7 @@ module.exports = gql`
     likes: [Like]!
     likeCount: Int!
     comments: [Comment]!
+    commentCount: Int!
   },
   type Comment {
     id: ID!

@@ -4,6 +4,7 @@
   "description": "MERN Final Project",
   "main": "server.js",
   "scripts": {
+    "serve": "node index",
     "start": "nodemon server"
   },
   "keywords": [],

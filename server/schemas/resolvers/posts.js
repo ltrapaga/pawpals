@@ -1,4 +1,5 @@
-const Post = require('../../models/Post');
+const Post = require("../../models/Post");
+const authMiddleware = require("../../utils/auth");
 
 module.exports = {
   Query: {
@@ -15,13 +16,29 @@ module.exports = {
         const post = await Post.findById(postId);
         if (post) {
           return post;
-
         } else {
-          throw new Error('No post found with that ID')
+          throw new Error("No post found with that ID");
         }
       } catch (err) {
         throw new Error(err);
       }
-    }
+    },
   },
-}
+  Mutation: {
+    async createPost(_, { body }, context) {
+      const user = authMiddleware(context);
+
+      if (body.trim() === "") {
+        throw new Error("Post cannot be empty");
+      }
+      const newPost = new Post({
+        body,
+        user: user.id,
+        username: user.username,
+        createdAt: new Date().toISOString(),
+      });
+      const post = await newPost.save();
+      return post;
+    },
+  },
+};

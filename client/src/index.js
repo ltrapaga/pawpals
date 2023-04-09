@@ -9,15 +9,14 @@ const httpLink = createHttpLink({
   });
 
 const client = new ApolloClient({
-  uri: httpLink,
-  cache: new InMemoryCache(),
+  uri: httpLink,
+  cache: new InMemoryCache(),
 });
 
-// Supported in React 18+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>,
 );

@@ -3,4 +3,9 @@
     text-align: center;
     font-size: 2rem;
     margin-top: 10px;
-  }
+}
+
+.form-container {
+    width: 400px;
+    margin: auto;
+}

@@ -8,7 +8,7 @@ module.exports.validateRegistration = (
   if (username.trim() === "") {
     errors.username = "Username cannot be empty";
   }
-  if (username.trim() === "") {
+  if (email.trim() === "") {
     errors.email = "Email cannot be empty";
   } else {
     const emailRegEx =

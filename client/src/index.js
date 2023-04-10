@@ -5,11 +5,11 @@ import App from './App';
 import { createHttpLink } from 'apollo-link-http';
 
 const httpLink = createHttpLink({
-    uri: 'http://localhost:3001'
+    uri: 'http://localhost:3001/graphql'
   });
 
 const client = new ApolloClient({
-  uri: httpLink,
+  link: httpLink,
   cache: new InMemoryCache(),
 });
 

@@ -29,7 +29,7 @@ function PostForm() {
   }
 
   return (
-    // <>
+    <>
       <Form onSubmit={onSubmit}>
         <h2>Create a post:</h2>
         <Form.Field>
@@ -45,14 +45,14 @@ function PostForm() {
           </Button>
         </Form.Field>
       </Form>
-    //   {error && (
-    //     <div className="ui error message" style={{ marginBottom: 20 }}>
-    //       <ul className="list">
-    //         <li>{error.graphQLErrors[0].message}</li>
-    //       </ul>
-    //     </div>
-    //   )}
-    // </>
+      {error && (
+        <div className="ui error message" style={{ marginBottom: 20 }}>
+          <ul className="list">
+            <li>{error.graphQLErrors[0].message}</li>
+          </ul>
+        </div>
+      )}
+    </>
   );
 }
 

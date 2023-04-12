@@ -1,4 +1,5 @@
 import React from 'react';
+import { StrictMode } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 
@@ -15,6 +16,7 @@ import AuthRoute from './util/AuthRoute';
 
 function App() {
   return (
+    <StrictMode>
     <AuthProvider>
       <Router>
         <Container> 
@@ -29,6 +31,7 @@ function App() {
         </Container>
       </Router>
     </AuthProvider>
+    </StrictMode>
   );
 }
 

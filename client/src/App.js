@@ -17,6 +17,7 @@ import AuthRoute from './util/AuthRoute';
 
 function App() {
   return (
+    <StrictMode>
     <AuthProvider>
       <Router>
         <Container> 
@@ -32,6 +33,7 @@ function App() {
         </Container>
       </Router>
     </AuthProvider>
+    </StrictMode>
   );
 }
 

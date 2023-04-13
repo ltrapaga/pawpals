@@ -24,7 +24,7 @@ export default function Login() {
       navigate('/');
     },
     onError(err) {
-      setErrors(err?.graphQLErrors[0]?.extensions?.exception?.errors || {});
+      setErrors(err?.graphQLErrors[0]?.extensions?.errors || {});
     },
     variables: values
   });

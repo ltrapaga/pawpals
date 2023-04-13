@@ -26,7 +26,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="//posts/:postId" element={<SinglePost />} />
+            <Route path="/posts/:postId" element={<SinglePost />} />
             <Route path="/auth" element={<AuthRoute />} />
             <Route path="/*" element={<Navigate to="/" />} />
           </Routes>

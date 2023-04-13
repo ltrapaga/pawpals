@@ -6,9 +6,9 @@ module.exports = gql`
     body: String!
     createdAt: String!
     username: String!
+    comments: [Comment]!
     likes: [Like]!
     likeCount: Int!
-    comments: [Comment]!
     commentCount: Int!
   },
   type Comment {
@@ -44,8 +44,8 @@ module.exports = gql`
     login(username: String!, password: String!): User!
     createPost(body: String!): Post!
     deletePost(postId: ID!): String!
-    likePost(postId: ID!): Post!
     createComment(postId: String!, body: String!): Post!
     deleteComment(postId: ID!, commentId: ID!): Post!
+    likePost(postId: ID!): Post!
   }
   `;

@@ -15,7 +15,7 @@ function MenuBar() {
 
   const menuBar = user ? (
     <Menu pointing secondary size="massive" color="teal">
-      <Menu.Item name={user.username} active as={NavLink} exact to="/" /> {/* use NavLink */}
+      <Menu.Item name={user.username} active as={NavLink} exact="true" to="/" /> {/* use NavLink */}
       
       <Menu.Menu position="right">
         <Menu.Item name="logout" onClick={logout} />
@@ -28,7 +28,7 @@ function MenuBar() {
         active={activeItem === 'home'}
         onClick={handleItemClick}
         as={NavLink}  // use NavLink instead of Link
-        exact to="/"  // add the `exact` prop to match only exact path
+        exact="true" to="/"  // add the `exact` prop to match only exact path
       />
 
       <Menu.Menu position="right">
@@ -37,14 +37,14 @@ function MenuBar() {
           active={activeItem === 'login'}
           onClick={handleItemClick}
           as={NavLink}  // use NavLink instead of Link
-          to="/login"
+          exact="true" to="/login"
         />
         <Menu.Item
           name="register"
           active={activeItem === 'register'}
           onClick={handleItemClick}
           as={NavLink}  // use NavLink instead of Link
-          to="/register"
+          exact="true" to="/register"
         />
       </Menu.Menu>
     </Menu>

@@ -5,6 +5,7 @@ import gql from 'graphql-tag';
 import { useForm } from '../util/hooks';
 import { AuthContext } from '../context/auth';
 import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 export default function Login() {
   const context = useContext(AuthContext);
@@ -32,7 +33,7 @@ export default function Login() {
     loginUser();
   }
 
-  return (
+  return context?.user ? <Navigate replace to="/" /> : (
     <div className="form-container">
       <Form onSubmit={onSubmit} noValidate className={loading ? 'loading' : ''}>
         <h1>Login</h1>

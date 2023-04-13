@@ -18,13 +18,13 @@ import DeleteButton from '../components/DeleteButton';
 // import MyPopup from '../util/MyPopup';
 
 function SinglePost(props) {
-        const postId = props.match.params.postId;
+    const postId = props.match?.params?.postId;
         const { user } = useContext(AuthContext);
 
         console.log(postId);
 
     const {
-        data: { getPost }
+        data: { getSinglePost }
       } = useQuery(FETCH_POST_QUERY, {
         variables: {
           postId
@@ -33,7 +33,7 @@ function SinglePost(props) {
 
 
 let postMarkup;
-if (!getPost) {
+if (!getSinglePost) {
   postMarkup = <p>Loading post..</p>;
 } else {
   const {
@@ -45,7 +45,7 @@ if (!getPost) {
     // likes,
     // likeCount,
     commentCount
-  } = getPost;
+  } = getSinglePost;
 
   postMarkup = (
     <Grid>
@@ -135,7 +135,7 @@ return postMarkup;
 }
 const FETCH_POST_QUERY = gql`
   query($postId: ID!) {
-    getPost(postId: $postId) {
+    getSinglePost(postId: $postId) {
       id
       body
       createdAt

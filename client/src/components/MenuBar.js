@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Menu } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';  // import NavLink instead of Link
 
 import { AuthContext } from '../context/auth';
 
@@ -15,20 +15,20 @@ function MenuBar() {
 
   const menuBar = user ? (
     <Menu pointing secondary size="massive" color="teal">
-    <Menu.Item name={user.username} active as={Link} to="/" />
-
-    <Menu.Menu position="right">
-      <Menu.Item name="logout" onClick={logout} />
-    </Menu.Menu>
-  </Menu>
-) : (
+      <Menu.Item name={user.username} active as={NavLink} exact to="/" /> {/* use NavLink */}
+      
+      <Menu.Menu position="right">
+        <Menu.Item name="logout" onClick={logout} />
+      </Menu.Menu>
+    </Menu>
+  ) : (
     <Menu pointing secondary size='massive' color='teal'>
       <Menu.Item
         name="home"
         active={activeItem === 'home'}
         onClick={handleItemClick}
-        as={Link}
-        to="/"
+        as={NavLink}  // use NavLink instead of Link
+        exact to="/"  // add the `exact` prop to match only exact path
       />
 
       <Menu.Menu position="right">
@@ -36,14 +36,14 @@ function MenuBar() {
           name="login"
           active={activeItem === 'login'}
           onClick={handleItemClick}
-          as={Link}
+          as={NavLink}  // use NavLink instead of Link
           to="/login"
         />
         <Menu.Item
           name="register"
           active={activeItem === 'register'}
           onClick={handleItemClick}
-          as={Link}
+          as={NavLink}  // use NavLink instead of Link
           to="/register"
         />
       </Menu.Menu>

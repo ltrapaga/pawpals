@@ -24,8 +24,10 @@ export default function Register() {
       navigate('/');
     },
     onError(err) {
+      console.log(err?.graphQLErrors[0]?.extensions?.errors);
+      console.log(err);
       setErrors(
-        err?.graphQLErrors[0]?.extensions?.exception?.errors || {}
+        err?.graphQLErrors[0]?.extensions?.errors || {}
       );
     },
     variables: values
@@ -79,14 +81,13 @@ export default function Register() {
           Register
         </Button>
       </Form>
-{/* TODO: Get registrationValidation errors to display to the client (Similar to the componenent/PostForm.js)*/}
       {Object.keys(errors).length > 0 && (
         <div className="ui error message">
-          <ul className="list">
+          {<ul className="list">
             {Object.values(errors).map((value) => (
               <li key={value}>{value}</li>
             ))}
-          </ul>
+            </ul>}
         </div>
       )}
     </div>

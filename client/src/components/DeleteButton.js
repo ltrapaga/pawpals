@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 import { Button, Confirm, Icon } from 'semantic-ui-react';
 
-// import { FETCH_POSTS_QUERY } from '../util/graphql';
+import { FETCH_POSTS_QUERY } from '../util/graphql';
 // import MyPopup from '../util/MyPopup';
 
 function DeleteButton({ postId, commentId, callback }) {
@@ -12,17 +12,19 @@ function DeleteButton({ postId, commentId, callback }) {
 //   const mutation = commentId ? DELETE_COMMENT_MUTATION : DELETE_POST_MUTATION;
 
   const [deletePost] = useMutation(DELETE_POST_MUTATION, {
-    update() {
+    update(proxy) {
       setConfirmOpen(false);
       // remove post from cache
     //   if (!commentId) {
-    //     const data = proxy.readQuery({
-    //       query: FETCH_POSTS_QUERY
-    //     });
-    //     data.getPosts = data.getPosts.filter((p) => p.id !== postId);
-    //     proxy.writeQuery({ query: FETCH_POSTS_QUERY, data });
-    //   }
-    //   if (callback) callback();
+      const data = proxy.readQuery({
+        query: FETCH_POSTS_QUERY
+      });
+      const newData = {
+        ...data,
+        getPosts: data.getPosts.filter((p) => p.id !== postId)
+      };
+      proxy.writeQuery({ query: FETCH_POSTS_QUERY, data: newData });
+      if (callback) callback();
     },
     variables: {
       postId,
@@ -56,19 +58,19 @@ const DELETE_POST_MUTATION = gql`
   }
 `;
 
-const DELETE_COMMENT_MUTATION = gql`
-  mutation deleteComment($postId: ID!, $commentId: ID!) {
-    deleteComment(postId: $postId, commentId: $commentId) {
-      id
-      comments {
-        id
-        username
-        createdAt
-        body
-      }
-      commentCount
-    }
-  }
-`;
+// const DELETE_COMMENT_MUTATION = gql`
+//   mutation deleteComment($postId: ID!, $commentId: ID!) {
+//     deleteComment(postId: $postId, commentId: $commentId) {
+//       id
+//       comments {
+//         id
+//         username
+//         createdAt
+//         body
+//       }
+//       commentCount
+//     }
+//   }
+// `;
 
 export default DeleteButton;

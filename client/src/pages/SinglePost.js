@@ -22,7 +22,7 @@ import { useNavigate } from 'react-router-dom';
 function SinglePost(props) {
   const postId = props.match?.params?.postId || "";
     const { user } = useContext(AuthContext);
-  
+    // postid and data not getting recognized
     console.log(postId);
   
     const { getSinglePost } = useQuery(FETCH_POST_QUERY, {

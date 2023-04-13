@@ -28,7 +28,7 @@ function PostForm() {
     createPost();
   }
 
-  return (
+   return (
     <>
       <Form onSubmit={onSubmit}>
         <h2>Create a post:</h2>

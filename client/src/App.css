@@ -9,3 +9,9 @@
     width: 400px;
     margin: auto;
 }
+
+/***** Like Button Styling *****/
+.ui.green.button:focus,
+.ui.green.buttons .button:focus {
+  background-color: #21ba45
+}

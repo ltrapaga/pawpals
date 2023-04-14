@@ -13,9 +13,9 @@ import {
   } from 'semantic-ui-react';
 
 import { AuthContext } from '../context/auth';
-// import LikeButton from '../components/LikeButton';
+// import Like from '../components/LikeButton';
 import DeleteButton from '../components/DeleteButton';
-// import MyPopup from '../util/MyPopup';
+// import popup from '../util/popup';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -75,8 +75,8 @@ function SinglePost(props) {
                 </Card.Content>
                 <hr />
                 <Card.Content extra>
-                  {/* <LikeButton user={user} post={{ id, likeCount, likes }} /> */}
-                  {/* <MyPopup content="Comment on post"> */}
+                  {/* <Like user={user} post={{ id, likeCount, likes }} /> */}
+                  {/* <popup content="Comment on post"> */}
                   <Button
                     as="div"
                     labelPosition="right"
@@ -89,7 +89,7 @@ function SinglePost(props) {
                       {commentCount}
                     </Label>
                   </Button>
-                  {/* </MyPopup> */}
+                  {/* </popup> */}
                   {user && user.username === username && (
                     <DeleteButton postId={id} callback={deletePostCallback}/>
                   )}

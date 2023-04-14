@@ -1,10 +1,10 @@
-# ButtSniffer Dog Social Media Application
+# ButtSniffer - A Social Media Application for Dogs
 
 ## Description
 
-Introducting ButtSniffer, the ultimate social media platform for dogs! Here at ButtSniffer, dogs can create an account, post updates, comment on other dogs' posts, and even like their favorite thoughts from other dogs.
+Introducing ButtSniffer, the ultimate social media platform for dogs! Here at ButtSniffer, dogs can create an account, create posts, comment on other dogs' posts, and even like their favorite thoughts from other dogs.
 
-With ButtSniffer, dogs can connect with other dogs in their local area or from around the world. They can share their daily adventures, post pictures of their favorite toys, and even bark about their favorite treats. Whether your dog is a playful pup or a lazy lap dog, there's something for everyone on ButtSniffer.
+With our platform, dogs can connect with other dogs in their local area or from around the world. They can share their daily adventures, talk about their favorite toys, and even bark about their favorite treats. Whether your dog is a playful pup or a lazy lap dog, there's something for everyone on ButtSniffer.
 
 Not only is ButtSniffer a great way for dogs to connect with other dogs, but it's also a safe and secure platform. We take your dog's privacy seriously and have measures in place to protect their personal information. Plus, our community guidelines ensure that all dogs are respectful and friendly to one another.
 

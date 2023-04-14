@@ -6,20 +6,27 @@ import { useMutation } from '@apollo/client';
 import { useForm } from '../util/hooks';
 import { FETCH_POSTS_QUERY } from '../util/graphql';
 
+// Declaring a functional component named PostForm
 function PostForm() {
+  // Destructuring values, onChange, and onSubmit from the useForm hook
   const { values, onChange, onSubmit } = useForm(createPostCallback, {
     body: ''
   });
 
   const [createPost, { error }] = useMutation(CREATE_POST_MUTATION, {
     variables: values,
+    //Defining an update function to update the cache after the mutation is executed
     update(proxy, result) {
         const data = proxy.readQuery({
           query: FETCH_POSTS_QUERY
         });
-        const newData = { ...data };
-        newData.getPosts = [result.data.createPost, ...data.getPosts];
+        // Creating a new copy of the data object
+        const newData = { ...data }; 
+        // Updating the getPosts field with the new post at the beginning
+        newData.getPosts = [result.data.createPost, ...data.getPosts]; 
+        // Writing the updated data object to the cache
         proxy.writeQuery({ query: FETCH_POSTS_QUERY, data: newData });
+        // Resetting the value of the body field to an empty string
         values.body = '';
       }
   });
@@ -38,6 +45,7 @@ function PostForm() {
             name="body"
             onChange={onChange}
             value={values.body}
+            // Checking if there is an error and passing it to the error prop of the Input component
             error={error ? true : false}
           />
           <Button type="submit" color="teal">
@@ -55,7 +63,7 @@ function PostForm() {
     </>
   );
 }
-
+// Defining a GraphQL mutation using the gql function
 const CREATE_POST_MUTATION = gql`
   mutation createPost($body: String!) {
     createPost(body: $body) {

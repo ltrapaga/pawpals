@@ -20,25 +20,31 @@ import { useNavigate } from 'react-router-dom';
 
 
 function SinglePost(props) {
+  // Extracting postId from props and assigning it to postId variable
   const postId = props.match?.params?.postId || "";
+  // Extracting user from AuthContext using the useContext hook
     const { user } = useContext(AuthContext);
     // postid and data not getting recognized
     console.log(postId);
   
+    // Executing the useQuery hook to get a single post
     const { getSinglePost } = useQuery(FETCH_POST_QUERY, {
       variables: {
         postId,
       },
     });
-
+    // Using the useNavigate hook to navigate to a new page
     const navigate = useNavigate();
-
+    // Callback function to be called when a post is deleted
     function deletePostCallback() {
+      // Navigating to the home page after deleting the post
       navigate('/');
     }
   
     let postMarkup;
+    // Checking if the getSinglePost data is not present
     if (!getSinglePost) {
+      // Displaying a loading message if data is not present
       postMarkup = <p>Loading post..</p>;
     } else {
       const {
@@ -50,7 +56,7 @@ function SinglePost(props) {
         // likes,
         // likeCount,
         commentCount,
-      } = getSinglePost;
+      } = getSinglePost; // Destructuring the data from getSinglePost
   
       postMarkup = (
         <Grid>

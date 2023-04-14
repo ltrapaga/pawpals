@@ -7,10 +7,13 @@ import { AuthContext } from '../context/auth';
 import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
+  // Retrieve the authentication context and navigation
   const context = useContext(AuthContext);
   const navigate = useNavigate();
+  // Define the state for any errors
   const [errors, setErrors] = useState({});
 
+  // Define the form values and handlers using the useForm custom hook
   const { onChange, onSubmit, values } = useForm(registerUser, {
     username: '',
     email: '',
@@ -18,15 +21,20 @@ export default function Register() {
     confirmPwd: ''
   });
 
+  // Define the addUser mutation with variables and update/error handlers
   const [addUser, { loading }] = useMutation(REGISTER_USER, {
     update(_, { data: { register: userData } }) {
+      // Login the user and update the context
       context.login(userData);
+      // Navigate to the home page
       navigate('/');
     },
     onError(err) {
+       // Log any errors in the console
       console.log(err?.graphQLErrors[0]?.extensions?.errors);
       console.log(err);
       setErrors(
+        // Set the state with any errors from the server
         err?.graphQLErrors[0]?.extensions?.errors || {}
       );
     },

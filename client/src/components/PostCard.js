@@ -1,21 +1,17 @@
-import React, { useContext } from 'react';
-import { Button, Card, Icon, Label, Image } from 'semantic-ui-react';
-import { NavLink } from 'react-router-dom';
-import { formatDistanceToNow } from 'date-fns';
+import React, { useContext } from "react";
+import { Button, Card, Icon, Label, Image } from "semantic-ui-react";
+import { NavLink } from "react-router-dom";
+import { formatDistanceToNow } from "date-fns";
 
-import { AuthContext } from '../context/auth';
-// import LikeButton from './LikeButton';
-import DeleteButton from './DeleteButton';
-// import MyPopup from '../util/MyPopup';
+import { AuthContext } from "../context/auth";
+import Like from "./Likes";
+import DeleteButton from "./DeleteButton";
+//import popup from '../util/popup';
 
 function PostCard({
-  post: { body, createdAt, id, username, likeCount, commentCount, likes }
+  post: { body, createdAt, id, username, likeCount, commentCount, likes },
 }) {
   const { user } = useContext(AuthContext);
-
-  function likePost() {
-    console.log('Like post!!')
-  }
 
   return (
     <Card fluid>
@@ -32,25 +28,17 @@ function PostCard({
         <Card.Description>{body}</Card.Description>
       </Card.Content>
       <Card.Content extra>
-        {/* <LikeButton user={user} post={{ id, likes, likeCount }} />
-        <MyPopup content="Comment on post"> */}
-        <Button as="div" labelPosition="right" onClick={likePost}>
-          <Button color="red" basic>
-            <Icon name="heart" />
-          </Button>
-          <Label basic color="blue" pointing="left">
-            {likeCount}
-          </Label>
-        </Button>
+        <Like user={user} post={{ id, likes, likeCount }} />
+        {/* <popup content="Comment on post"> */}
         <Button labelPosition="right" as={NavLink} to={`/posts/${id}`}>
-          <Button color="blue" basic>
+          <Button color="teal" basic>
             <Icon name="comments" />
           </Button>
-          <Label basic color="blue" pointing="left">
+          <Label basic color="teal" pointing="left">
             {commentCount}
           </Label>
         </Button>
-        {/* </MyPopup> */}
+        {/* </popup> */}
         {user && user.username === username && <DeleteButton postId={id} />}
       </Card.Content>
     </Card>

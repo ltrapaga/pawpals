@@ -62,7 +62,7 @@ module.exports = {
       const { username } = authMiddleware(context);
       const post = await Post.findById(postId);
       if (post) {
-        // If a `like` already exists because the userpreviously liked the same post
+        // If a `like` already exists because the user previously liked the same post
         if (post.likes.find((like) => like.username === username)) {
           // Then unlike that post
           post.likes = post.likes.filter((like) => like.username !== username);

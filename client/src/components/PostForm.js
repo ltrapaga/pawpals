@@ -6,7 +6,6 @@ import { useMutation } from '@apollo/client';
 import { useForm } from '../util/hooks';
 import { FETCH_POSTS_QUERY } from '../util/graphql';
 
-// Declaring a functional component named PostForm
 function PostForm() {
   // Destructuring values, onChange, and onSubmit from the useForm hook
   const { values, onChange, onSubmit } = useForm(createPostCallback, {
@@ -38,10 +37,10 @@ function PostForm() {
    return (
     <>
       <Form onSubmit={onSubmit}>
-        <h2>Create a post:</h2>
+        <h2>Post a bark:</h2>
         <Form.Field>
           <Form.Input
-            placeholder="Hi World!"
+            placeholder="Woof Woof!"
             name="body"
             onChange={onChange}
             value={values.body}

@@ -9,13 +9,13 @@ import { FETCH_POSTS_QUERY } from '../util/graphql';
 
 export default function Home() {
   const { user } = useContext(AuthContext);
-
+    // Fetch posts using the GraphQL query
     const { loading, data } = useQuery(FETCH_POSTS_QUERY);
 
     if (data) {
         console.log(data);
       }
-    
+      // Extract the posts data from the fetched data.
       const posts = data ? data.getPosts : [];
 
   return (

@@ -8,9 +8,10 @@
     "node" : ">=16.0.0 <17.0.0"
   },
   "scripts": {
-    "serve": "node server",
-    "start": "nodemon server",
-    "develop": "concurrently \"npm start\" \"cd client && npm start\""
+    "start": "node server",
+    "develop": "concurrently \"nodemon server\" \"cd client && npm start\"",
+    "install": "npm i && cd client && npm i",
+    "build": "cd client && npm run build"
 
   },
   "keywords": [],

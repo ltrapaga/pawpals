@@ -26,7 +26,6 @@ The following necessary dependencies must be installed to run the application:
 * React-dom/client
 * Semantic-ui-css
 * Semantic-ui-react
-* Apollo/client
 * GraphQl
 * Graphql-tag
 * Express

@@ -11,6 +11,7 @@ function DeleteButton({ postId, commentId, callback }) {
 
 //   const mutation = commentId ? DELETE_COMMENT_MUTATION : DELETE_POST_MUTATION;
 
+  // Use the DELETE_POST_MUTATION mutation to delete the post and update the cache
   const [deletePost] = useMutation(DELETE_POST_MUTATION, {
     update(proxy) {
       setConfirmOpen(false);
@@ -34,6 +35,7 @@ function DeleteButton({ postId, commentId, callback }) {
   return (
     <>
       {/* <popup content={commentId ? 'Delete comment' : 'Delete post'}> */}
+        {/* Button that triggers the delete confirmation dialog */}
         <Button
           as="div"
           color="red"
@@ -43,6 +45,7 @@ function DeleteButton({ postId, commentId, callback }) {
           <Icon name="trash" style={{ margin: 0 }} />
         </Button>
       {/* </popup> */}
+      {/* Confirmation dialog that appears when the delete button is clicked */}
       <Confirm
         open={confirmOpen}
         onCancel={() => setConfirmOpen(false)}
@@ -51,7 +54,7 @@ function DeleteButton({ postId, commentId, callback }) {
     </>
   );
 }
-
+// GraphQL mutation for deleting a post
 const DELETE_POST_MUTATION = gql`
   mutation deletePost($postId: ID!) {
     deletePost(postId: $postId)

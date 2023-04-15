@@ -8,21 +8,25 @@ function MenuBar() {
   const { user, logout } = useContext(AuthContext);
   const pathname = window.location.pathname;
 
+  // Set the active menu item based on the pathname
   const path = pathname === '/' ? 'home' : pathname.slice(1);
   const [activeItem, setActiveItem] = useState(path);
 
   const handleItemClick = (e, { name }) => setActiveItem(name);
 
+  // Render the menu bar based on whether the user is logged in or not
   const menuBar = user ? (
-    <Menu pointing secondary size="massive" color="teal">
+    <Menu pointing secondary size="massive" color="brown">
+      {/* Display the username as the first menu item */}
       <Menu.Item name={user.username} active as={NavLink} exact="true" to="/" /> {/* use NavLink */}
-      
+      {/* Display a logout button on the right */}
       <Menu.Menu position="right">
         <Menu.Item name="logout" onClick={logout} />
       </Menu.Menu>
     </Menu>
   ) : (
-    <Menu pointing secondary size='massive' color='teal'>
+    <Menu pointing secondary size='massive' color='brown'>
+      {/* Display the home, login, and register links */}
       <Menu.Item
         name="home"
         active={activeItem === 'home'}

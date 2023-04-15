@@ -15,7 +15,9 @@ const server = new ApolloServer({
   context: ({ req }) => ({ req })
 });
 
+// Parses incoming requests with urlencoded payloads
 app.use(express.urlencoded({ extended: false }));
+// Parses incoming requests with JSON payloads
 app.use(express.json());
 
 const startApolloServer = async (typeDefs, resolvers) => {
@@ -23,7 +25,7 @@ const startApolloServer = async (typeDefs, resolvers) => {
   server.applyMiddleware({ app });
   
   db.once('open', () => {
-    app.listen(PORT, () => {
+    app.listen(PORT, () => { // Start listening to incoming requests
       console.log(`API server running on port ${PORT}!`);
       console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
     })

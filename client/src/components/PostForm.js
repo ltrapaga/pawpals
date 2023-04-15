@@ -40,14 +40,14 @@ function PostForm() {
         <h2>Post a bark:</h2>
         <Form.Field>
           <Form.Input
-            placeholder="Woof Woof!"
+            placeholder="Woof!! What's on your mind today?"
             name="body"
             onChange={onChange}
             value={values.body}
             // Checking if there is an error and passing it to the error prop of the Input component
             error={error ? true : false}
           />
-          <Button type="submit" color="teal">
+          <Button type="submit" color="brown">
             Submit
           </Button>
         </Form.Field>

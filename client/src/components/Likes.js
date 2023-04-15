@@ -24,16 +24,16 @@ function Like({ user, post: { id, likeCount, likes } }) {
   // Determine which button to display based on whether the user has liked the post or not
   const likeButton = user ? (
     liked ? (
-      <Button color="green">
+      <Button color="orange">
         <Icon name="paw" />
       </Button>
     ) : (
-      <Button color="green" basic>
+      <Button color="orange" basic>
         <Icon name="paw" />
       </Button>
     )
   ) : (
-    <Button as={NavLink} to="/login" color="green" basic>
+    <Button as={NavLink} to="/login" color="orange" basic>
       <Icon name="paw" />
     </Button>
   );
@@ -45,7 +45,7 @@ function Like({ user, post: { id, likeCount, likes } }) {
       {likeButton}
      {/*</Button> </popup> */}
      {/* Display the number of likes */}
-      <Label basic color="green" pointing="left">
+      <Label basic color="orange" pointing="left">
         {likeCount}
       </Label>
     </Button>

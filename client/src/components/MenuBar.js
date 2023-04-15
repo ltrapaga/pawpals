@@ -16,7 +16,7 @@ function MenuBar() {
 
   // Render the menu bar based on whether the user is logged in or not
   const menuBar = user ? (
-    <Menu pointing secondary size="massive" color="teal">
+    <Menu pointing secondary size="massive" color="brown">
       {/* Display the username as the first menu item */}
       <Menu.Item name={user.username} active as={NavLink} exact="true" to="/" /> {/* use NavLink */}
       {/* Display a logout button on the right */}
@@ -25,7 +25,7 @@ function MenuBar() {
       </Menu.Menu>
     </Menu>
   ) : (
-    <Menu pointing secondary size='massive' color='teal'>
+    <Menu pointing secondary size='massive' color='brown'>
       {/* Display the home, login, and register links */}
       <Menu.Item
         name="home"

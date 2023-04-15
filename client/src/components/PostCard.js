@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Button, Card, Icon, Label, Image } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
+import myImage from "../images/dogprofilepic.png";
 
 import { AuthContext } from "../context/auth";
 import Like from "./Likes";
@@ -14,12 +15,12 @@ function PostCard({
   const { user } = useContext(AuthContext);
 
   return (
-    <Card fluid>
+    <Card fluid color='red'>
       <Card.Content>
         <Image
           floated="right"
-          size="mini"
-          src="https://react.semantic-ui.com/images/avatar/large/molly.png"
+          size="mini" rounded bordered
+          src={myImage}
         />
         <Card.Header>{username}</Card.Header>
         {/* render post time and date */}
@@ -33,11 +34,11 @@ function PostCard({
         <Like user={user} post={{ id, likes, likeCount }} />
         {/* <popup content="Comment on post"> */}
         <Button labelPosition="right" as={NavLink} to={`/posts/${id}`}>
-          <Button color="teal" basic>
+          <Button color="brown" basic>
             <Icon name="comments" />
           </Button>
           {/* Display the number of comments */}
-          <Label basic color="teal" pointing="left">
+          <Label basic color="brown" pointing="left">
             {commentCount}
           </Label>
         </Button>

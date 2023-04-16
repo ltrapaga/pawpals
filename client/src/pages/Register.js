@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react';
-import { Button, Form } from 'semantic-ui-react';
-import { useMutation } from '@apollo/client';
-import gql from 'graphql-tag';
-import { useForm } from '../util/hooks';
-import { AuthContext } from '../context/auth';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useState } from "react";
+import { Button, Form } from "semantic-ui-react";
+import { useMutation } from "@apollo/client";
+import gql from "graphql-tag";
+import { useForm } from "../util/hooks";
+import { AuthContext } from "../context/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   // Retrieve the authentication context and navigation
@@ -15,10 +15,10 @@ export default function Register() {
 
   // Define the form values and handlers using the useForm custom hook
   const { onChange, onSubmit, values } = useForm(registerUser, {
-    username: '',
-    email: '',
-    password: '',
-    confirmPwd: ''
+    username: "",
+    email: "",
+    password: "",
+    confirmPwd: "",
   });
 
   // Define the addUser mutation with variables and update/error handlers
@@ -27,18 +27,17 @@ export default function Register() {
       // Login the user and update the context
       context.login(userData);
       // Navigate to the home page
-      navigate('/');
+      navigate("/");
     },
     onError(err) {
-       // Log any errors in the console
+      // Log any errors in the console
       console.log(err?.graphQLErrors[0]?.extensions?.errors);
-      console.log(err);
       setErrors(
         // Set the state with any errors from the server
         err?.graphQLErrors[0]?.extensions?.errors || {}
       );
     },
-    variables: values
+    variables: values,
   });
 
   function registerUser() {
@@ -47,7 +46,7 @@ export default function Register() {
 
   return (
     <div className="form-container">
-      <Form onSubmit={onSubmit} noValidate className={loading ? 'loading' : ''}>
+      <Form onSubmit={onSubmit} noValidate className={loading ? "loading" : ""}>
         <h1>Register</h1>
         <Form.Input
           label="Username"
@@ -85,17 +84,17 @@ export default function Register() {
           error={errors.confirmPwd ? true : false}
           onChange={onChange}
         />
-        <Button type="submit">
-          Register
-        </Button>
+        <Button type="submit">Register</Button>
       </Form>
       {Object.keys(errors).length > 0 && (
         <div className="ui error message">
-          {<ul className="list">
-            {Object.values(errors).map((value) => (
-              <li key={value}>{value}</li>
-            ))}
-            </ul>}
+          {
+            <ul className="list">
+              {Object.values(errors).map((value) => (
+                <li key={value}>{value}</li>
+              ))}
+            </ul>
+          }
         </div>
       )}
     </div>
@@ -125,4 +124,3 @@ const REGISTER_USER = gql`
     }
   }
 `;
-

@@ -4,7 +4,6 @@ import { useMutation } from '@apollo/client';
 import { Button, Confirm, Icon } from 'semantic-ui-react';
 
 import { FETCH_POSTS_QUERY } from '../util/graphql';
-// import popup from '../util/popup';
 
 export default function DeletePostButton({ postId, commentId, callback }) {
   const [confirmOpen, setConfirmOpen] = useState(false);
@@ -33,8 +32,6 @@ export default function DeletePostButton({ postId, commentId, callback }) {
   });
   return (
     <>
-      {/* <popup content={commentId ? 'Delete comment' : 'Delete post'}> */}
-        {/* Button that triggers the delete confirmation dialog */}
         <Button
           as="div"
           color="red"
@@ -43,8 +40,6 @@ export default function DeletePostButton({ postId, commentId, callback }) {
         >
           <Icon name="trash" style={{ margin: 0 }} />
         </Button>
-      {/* </popup> */}
-      {/* Confirmation dialog that appears when the delete button is clicked */}
       <Confirm
         open={confirmOpen}
         onCancel={() => setConfirmOpen(false)}

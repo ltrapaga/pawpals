@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/auth";
 import { useNavigate, useParams } from "react-router-dom";
 import gql from "graphql-tag";
@@ -7,16 +7,16 @@ import { formatDistanceToNow } from "date-fns";
 import {
   Button,
   Card,
-  // Form,
   Grid,
   Image,
   Icon,
   Label,
-  Popup 
+  Popup,
 } from "semantic-ui-react";
 
-import AddComment from '../components/AddComment';
-import CommentCard from '../components/CommentCard'
+import AddComment from "../components/AddComment";
+import CommentCard from "../components/CommentCard";
+import Like from "../components/Likes";
 import DeletePostButton from "../components/DeletePostButton";
 import myImage from "../images/dogprofilepic.png";
 
@@ -25,6 +25,8 @@ export default function SinglePost() {
   const { postId } = useParams() || "";
   // Extracting user from AuthContext using the useContext hook
   const { user } = useContext(AuthContext);
+
+  const [isCommenting, setIsCommenting] = useState(false);
 
   // Executing the useQuery hook to get a single post
   const { loading, data } = useQuery(FETCH_POST_QUERY, {
@@ -62,47 +64,38 @@ export default function SinglePost() {
             </Card.Content>
             <hr />
             <Card.Content extra>
-              {/* <Like user={user} post={{ id, likeCount, likes }} /> */}
+              <Like user={user} post={post} />
               <Popup
-                content='Add comment'
+                content="Add comment"
                 pinned
-                trigger={<Button
-                  as="div"
-                  labelPosition="right"
-                  onClick={() => {console.log("Comment on post")}}
-                >
-                  <Button basic color="blue">
-                    <Icon name="comments" />
+                trigger={
+                  <Button
+                    as="div"
+                    labelPosition="right"
+                    onClick={() => setIsCommenting(!isCommenting)}
+                  >
+                    <Button basic color="blue">
+                      <Icon name="comments" />
+                    </Button>
+                    <Label basic color="blue" pointing="left">
+                      {post.commentCount}
+                    </Label>
                   </Button>
-                  <Label basic color="blue" pointing="left">
-                    {post.commentCount}
-                  </Label>
-                </Button>}
+                }
               />
               {user && user.username === post.username && (
-                <DeletePostButton postId={post.id} callback={deletePostCallback} />
+                <DeletePostButton
+                  postId={post.id}
+                  callback={deletePostCallback}
+                />
               )}
             </Card.Content>
           </Card>
-          {user && (
-              <AddComment postId={ postId }></AddComment>
-            )}
+          {user && isCommenting && <AddComment postId={postId}></AddComment>}
 
-        {post.comments.map((comment) => (
-          <CommentCard postId={ postId } comment={comment}>
-          </CommentCard>  ))}
-          {/* {comments.map((comment) => (
-              <Card fluid key={comment.id}>
-                <Card.Content>
-                  {user && user.username === comment.username && (
-                    <DeleteButton postId={id} commentId={comment.id} />
-                  )}
-                  <Card.Header>{comment.username}</Card.Header>
-                  <Card.Meta>{formatDistanceToNow(new Date(createdAt), { addSuffix: true })}</Card.Meta>
-                  <Card.Description>{comment.body}</Card.Description>
-                </Card.Content>
-              </Card>
-            ))} */}
+          {post.comments.map((comment) => (
+            <CommentCard postId={postId} comment={comment}></CommentCard>
+          ))}
         </Grid.Column>
       </Grid.Row>
     </Grid>

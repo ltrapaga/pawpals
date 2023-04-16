@@ -19,7 +19,7 @@ height: 45px;
 }
 
 .ui.menu .item {
-color: #dadada;
+color: #dadada!important;
 }
 
 .post-content {
@@ -33,6 +33,16 @@ border-radius: 0.7rem;
 .ui.button {
   border-radius: 3rem;
 }
+
+i.icon.paw:before{
+  color: orange;
+}
+
+.ui.labeled.button>.button {
+  background-color: #ffcf7652;
+
+}
+
 
 .ui.basic.label{
   color: #f2711c;

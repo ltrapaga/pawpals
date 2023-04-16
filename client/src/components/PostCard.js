@@ -15,7 +15,7 @@ export default function PostCard({
   const { user } = useContext(AuthContext);
 
   return (
-    <Card fluid color="red">
+    <Card fluid color='blue'>
       <Card.Content>
         <Image floated="right" size="mini" rounded bordered src={myImage} />
         <Card.Header>{username}</Card.Header>
@@ -30,11 +30,11 @@ export default function PostCard({
         <Like user={user} post={{ id, likes, likeCount }} />
         {/* <popup content="Comment on post"> */}
         <Button labelPosition="right" as={NavLink} to={`/posts/${id}`}>
-          <Button color="brown" basic>
+          <Button  basic>
             <Icon name="comments" />
           </Button>
           {/* Display the number of comments */}
-          <Label basic color="brown" pointing="left">
+          <Label basic color="blue" pointing="left">
             {commentCount}
           </Label>
         </Button>

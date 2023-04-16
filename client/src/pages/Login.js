@@ -61,7 +61,7 @@ export default function Login() {
           error={errors.password ? true : false}
           onChange={onChange}
         />
-        <Button type="submit" color='brown'>
+        <Button type="submit">
           Login
         </Button>
       </Form>

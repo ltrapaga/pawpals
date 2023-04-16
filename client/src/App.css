@@ -1,24 +1,45 @@
 .page-title {
     display: block !important;
-    text-align: center;
+}
 
-   
+.ui.menu .item {
+color: #2185d0;
 }
 
 .post-content {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+}
+.ui.secondary.menu {
+background-color: #2c2e31;
+border-radius: 0.7rem;
 }
 
+.ui.button {
+  border-radius: 3rem;
+}
+
+.ui.form input:not([type]), .ui.form input[type=date], .ui.form input[type=datetime-local], .ui.form input[type=email], .ui.form input[type=file], .ui.form input[type=number], .ui.form input[type=password], .ui.form input[type=search], .ui.form input[type=tel], .ui.form input[type=text], .ui.form input[type=time], .ui.form input[type=url] {
+  border-radius: 3rem;
+  background-color: #616060 
+}
+
+.ui.form input:not([type]), .ui.form input[type=date], .ui.form input[type=datetime-local], .ui.form input[type=email], .ui.form input[type=file], .ui.form input[type=number], .ui.form input[type=password], .ui.form input[type=search], .ui.form input[type=tel], .ui.form input[type=text], .ui.form input[type=time], .ui.form input[type=url] {
+padding: 1rem 3rem;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ui.menu .yellow.active.item, .ui.yellow.menu .active.item {
+  color: #2185d0 !important;
+  border-color: #2185d0 !important;
+}
 body {
-  background-color: rgb(222, 184, 135);
-  color: rgb(111, 80, 15); /* set the text color to white to ensure visibility */
+  background-color: rgb(35, 35, 35);
+  color:#2185d0; /* set the text color to white to ensure visibility */
   height: 100%; /* set the height to 100% to fill the entire viewport */
 }
 
 .ui.fluid.card {
-  background-color:rgb(255, 255, 240);
+  background-color:rgb(235, 235, 235);
 }
 
 .form-container {
@@ -29,5 +50,6 @@ body {
 /***** Like Button Styling *****/
 .ui.green.button:focus,
 .ui.green.buttons .button:focus {
-  background-color: #ba6d21
+  background-color: #215eba
 }
+

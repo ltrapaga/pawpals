@@ -85,7 +85,7 @@ export default function Register() {
           error={errors.confirmPwd ? true : false}
           onChange={onChange}
         />
-        <Button type="submit" color='brown'>
+        <Button type="submit">
           Register
         </Button>
       </Form>

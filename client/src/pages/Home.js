@@ -23,15 +23,17 @@ export default function Home() {
         };
   return (
     <Grid stackable columns={3}>
-      {user && (
-          <Grid.Column className="post-content" >
+      <Grid.Row className="page-title">
+        <Grid.Column mobile={16} tablet={8} computer={5}>
+          <Button compact size='massive' onClick={handleRefresh}>
+            Recent Barks:
+          </Button>
+        </Grid.Column>
+        {user && (
+          <Grid.Column mobile={16} tablet={12} computer={8} className="post-content">
             <PostForm />
           </Grid.Column>
         )}
-        <Grid.Row className="page-title">
-        <Button compact color='brown' size='massive' onClick={handleRefresh}>
-        Recent Barks:
-      </Button>
       </Grid.Row>
       <Grid.Row>
         {loading ? (
@@ -40,7 +42,7 @@ export default function Home() {
           <Transition.Group>
             {posts &&
               posts.map((post) => (
-                <Grid.Column key={post.id} style={{ marginBottom: 20 }}>
+                <Grid.Column key={post.id} mobile={16} tablet={8} computer={5} style={{ marginBottom: 20 }}>
                   <PostCard post={post} />
                 </Grid.Column>
               ))}

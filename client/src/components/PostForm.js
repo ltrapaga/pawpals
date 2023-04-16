@@ -37,8 +37,9 @@ function PostForm() {
    return (
     <>
       <Form onSubmit={onSubmit}>
+        
+        <Form.Group>
         <h2>Post a bark:</h2>
-        <Form.Field>
           <Form.Input
             placeholder="Woof!! What's on your mind today?"
             name="body"
@@ -47,10 +48,10 @@ function PostForm() {
             // Checking if there is an error and passing it to the error prop of the Input component
             error={error ? true : false}
           />
-          <Button type="submit" color="brown">
+          <Button type="submit" >
             Submit
           </Button>
-        </Form.Field>
+        </Form.Group>
       </Form>
       {error && (
         <div className="ui error message" style={{ marginBottom: 20 }}>

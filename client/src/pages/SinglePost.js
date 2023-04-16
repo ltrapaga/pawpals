@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
+import { AuthContext } from "../context/auth";
+import { useNavigate, useParams } from "react-router-dom";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/client";
 import { formatDistanceToNow } from "date-fns";
-import myImage from "../images/dogprofilepic.png";
 import {
   Button,
   Card,
@@ -11,13 +12,12 @@ import {
   Image,
   Icon,
   Label,
+  Popup 
 } from "semantic-ui-react";
 
-import { AuthContext } from "../context/auth";
-// import Like from '../components/LikeButton';
+import AddComment from '../components/AddComment';
 import DeleteButton from "../components/DeleteButton";
-// import popup from '../util/popup';
-import { useNavigate, useParams } from "react-router-dom";
+import myImage from "../images/dogprofilepic.png";
 
 export default function SinglePost() {
   // Extracting postId from props and assigning it to postId variable
@@ -62,52 +62,30 @@ export default function SinglePost() {
             <hr />
             <Card.Content extra>
               {/* <Like user={user} post={{ id, likeCount, likes }} /> */}
-              {/* <popup content="Comment on post"> */}
-              <Button
-                as="div"
-                labelPosition="right"
-                onClick={() => console.log("Comment on post")}
-              >
-                <Button basic color="blue">
-                  <Icon name="comments" />
-                </Button>
-                <Label basic color="blue" pointing="left">
-                  {post.commentCount}
-                </Label>
-              </Button>
-              {/* </popup> */}
+              <Popup
+                content='Add comment'
+                pinned
+                trigger={<Button
+                  as="div"
+                  labelPosition="right"
+                  onClick={() => {console.log("Comment on post")}}
+                >
+                  <Button basic color="blue">
+                    <Icon name="comments" />
+                  </Button>
+                  <Label basic color="blue" pointing="left">
+                    {post.commentCount}
+                  </Label>
+                </Button>}
+              />
               {user && user.username === post.username && (
                 <DeleteButton postId={post.id} callback={deletePostCallback} />
               )}
             </Card.Content>
           </Card>
-          {/* {user && (
-              <Card fluid>
-                <Card.Content>
-                  <p>Post a comment</p>
-                  <Form>
-                    <div className="ui action input fluid">
-                      <input
-                        type="text"
-                        placeholder="Comment.."
-                        name="comment"
-                        value={comment}
-                        onChange={(event) => setComment(event.target.value)}
-                        ref={commentInputRef}
-                      />
-                      <button
-                        type="submit"
-                        className="ui button teal"
-                        disabled={comment.trim() === ''}
-                        onClick={submitComment}
-                      >
-                        Submit
-                      </button>
-                    </div>
-                  </Form>
-                </Card.Content>
-              </Card>
-            )} */}
+          {user && (
+              <AddComment postId={ postId }></AddComment>
+            )}
           {/* {comments.map((comment) => (
               <Card fluid key={comment.id}>
                 <Card.Content>

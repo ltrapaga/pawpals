@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { useMutation } from "@apollo/client";
 import gql from "graphql-tag";
 import { Button, Card, Form } from "semantic-ui-react";
@@ -29,7 +29,7 @@ export default function AddComment({ postId }) {
       <Card.Content>
         <Form onSubmit={onSubmit}>
           <Form.Field>
-          <label className="commentLabel">Post a comment</label>
+            <label className="commentLabel">Post a comment</label>
             <Form.Input
               placeholder="Comment.."
               onChange={onChange}

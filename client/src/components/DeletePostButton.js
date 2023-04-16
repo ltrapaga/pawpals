@@ -6,10 +6,9 @@ import { Button, Confirm, Icon } from 'semantic-ui-react';
 import { FETCH_POSTS_QUERY } from '../util/graphql';
 // import popup from '../util/popup';
 
-export default function DeleteButton({ postId, commentId, callback }) {
+export default function DeletePostButton({ postId, commentId, callback }) {
   const [confirmOpen, setConfirmOpen] = useState(false);
 
-//   const mutation = commentId ? DELETE_COMMENT_MUTATION : DELETE_POST_MUTATION;
 
   // Use the DELETE_POST_MUTATION mutation to delete the post and update the cache
   const [deletePost] = useMutation(DELETE_POST_MUTATION, {
@@ -61,18 +60,4 @@ const DELETE_POST_MUTATION = gql`
   }
 `;
 
-// const DELETE_COMMENT_MUTATION = gql`
-//   mutation deleteComment($postId: ID!, $commentId: ID!) {
-//     deleteComment(postId: $postId, commentId: $commentId) {
-//       id
-//       comments {
-//         id
-//         username
-//         createdAt
-//         body
-//       }
-//       commentCount
-//     }
-//   }
-// `;
 

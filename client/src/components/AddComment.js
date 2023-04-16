@@ -27,9 +27,9 @@ export default function AddComment({ postId }) {
   return (
     <Card fluid>
       <Card.Content>
-        <p>Post a comment</p>
         <Form onSubmit={onSubmit}>
           <Form.Field>
+          <label className="commentLabel">Post a comment</label>
             <Form.Input
               placeholder="Comment.."
               onChange={onChange}

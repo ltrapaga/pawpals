@@ -8,7 +8,7 @@ const initialState = {
 if (localStorage.getItem('jwtToken')) {
     const decodedToken = jwtDecode(localStorage.getItem('jwtToken'));
   
-    // expiration of token and delete it and not logged in
+    // For security reasons need the token to eventually expire
     if (decodedToken.exp * 1000 < Date.now()) {
       localStorage.removeItem('jwtToken');
     } else {

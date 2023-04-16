@@ -37,18 +37,16 @@ function PostForm() {
    return (
     <>
       <Form onSubmit={onSubmit}>
-        
         <Form.Group>
-        <h2>Post a bark:</h2>
           <Form.Input
-            placeholder="Woof!! What's on your mind today?"
+            placeholder="What's on your mind today?"
             name="body"
             onChange={onChange}
             value={values.body}
             // Checking if there is an error and passing it to the error prop of the Input component
             error={error ? true : false}
           />
-          <Button type="submit" >
+          <Button className="submitbtn" type="submit" >
             Submit
           </Button>
         </Form.Group>

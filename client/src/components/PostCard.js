@@ -9,19 +9,15 @@ import Like from "./Likes";
 import DeleteButton from "./DeleteButton";
 //import popup from '../util/popup';
 
-function PostCard({
+export default function PostCard({
   post: { body, createdAt, id, username, likeCount, commentCount, likes },
 }) {
   const { user } = useContext(AuthContext);
 
   return (
-    <Card fluid color='red'>
+    <Card fluid color="red">
       <Card.Content>
-        <Image
-          floated="right"
-          size="mini" rounded bordered
-          src={myImage}
-        />
+        <Image floated="right" size="mini" rounded bordered src={myImage} />
         <Card.Header>{username}</Card.Header>
         {/* render post time and date */}
         <Card.Meta as={NavLink} to={`/posts/${id}`}>
@@ -49,5 +45,3 @@ function PostCard({
     </Card>
   );
 }
-
-export default PostCard;

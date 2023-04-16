@@ -6,7 +6,7 @@ import myImage from "../images/dogprofilepic.png";
 
 import { AuthContext } from "../context/auth";
 import Like from "./Likes";
-import DeleteButton from "./DeleteButton";
+import DeletePostButton from "./DeletePostButton";
 //import popup from '../util/popup';
 
 export default function PostCard({
@@ -40,7 +40,7 @@ export default function PostCard({
         </Button>
         {/* </popup> */}
         {/* If the current user is the post owner, render a button to delete the post */}
-        {user && user.username === username && <DeleteButton postId={id} />}
+        {user && user.username === username && <DeletePostButton postId={id} />}
       </Card.Content>
     </Card>
   );

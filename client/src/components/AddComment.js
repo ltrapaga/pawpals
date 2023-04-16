@@ -12,7 +12,6 @@ export default function AddComment({ postId }) {
 
   const [createComment] = useMutation(CREATE_COMMENT_MUTATION, {
     onCompleted: function () {
-      console.log("Test reload");
       window.location.reload();
     },
     variables: {

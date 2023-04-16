@@ -16,7 +16,8 @@ import {
 } from "semantic-ui-react";
 
 import AddComment from '../components/AddComment';
-import DeleteButton from "../components/DeleteButton";
+import CommentCard from '../components/CommentCard'
+import DeletePostButton from "../components/DeletePostButton";
 import myImage from "../images/dogprofilepic.png";
 
 export default function SinglePost() {
@@ -79,13 +80,17 @@ export default function SinglePost() {
                 </Button>}
               />
               {user && user.username === post.username && (
-                <DeleteButton postId={post.id} callback={deletePostCallback} />
+                <DeletePostButton postId={post.id} callback={deletePostCallback} />
               )}
             </Card.Content>
           </Card>
           {user && (
               <AddComment postId={ postId }></AddComment>
             )}
+
+        {post.comments.map((comment) => (
+          <CommentCard postId={ postId } comment={comment}>
+          </CommentCard>  ))}
           {/* {comments.map((comment) => (
               <Card fluid key={comment.id}>
                 <Card.Content>

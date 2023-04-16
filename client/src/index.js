@@ -23,7 +23,7 @@ const authLink = setContext(() => {
 // Create a new instance of the Apollo client with the authorization and http links and an in-memory cache
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 });
 // Create a new root element to render the App component
 const root = createRoot(document.getElementById('root'));

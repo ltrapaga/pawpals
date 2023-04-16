@@ -18,7 +18,7 @@ import AddComment from "../components/AddComment";
 import CommentCard from "../components/CommentCard";
 import Like from "../components/Likes";
 import DeletePostButton from "../components/DeletePostButton";
-import myImage from "../images/dogprofilepic.png";
+import spyroTheDog from "../images/dogprofilepic.png";
 
 export default function SinglePost() {
   // Extracting postId from props and assigning it to postId variable
@@ -37,7 +37,6 @@ export default function SinglePost() {
   const navigate = useNavigate();
   // Callback function to be called when a post is deleted
   function deletePostCallback() {
-    // Navigating to the home page after deleting the post
     navigate("/");
   }
 
@@ -49,7 +48,7 @@ export default function SinglePost() {
     <Grid>
       <Grid.Row>
         <Grid.Column width={2}>
-          <Image size="small" float="right" src={myImage} />
+          <Image size="small" float="right" src={spyroTheDog} />
         </Grid.Column>
         <Grid.Column width={10}>
           <Card fluid>

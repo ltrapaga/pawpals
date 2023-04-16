@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useQuery } from "@apollo/client";
-import { Button, Grid, Transition } from "semantic-ui-react";
+import { Grid, Transition } from "semantic-ui-react";
 
 import { AuthContext } from "../context/auth";
 import PostCard from "../components/PostCard";
@@ -14,22 +14,9 @@ export default function Home() {
 
   const posts = data?.getPosts || [];
 
-  const handleRefresh = () => {
-    window.location.reload(); // Reloads the current webpage
-  };
   return (
     <Grid stackable columns={3}>
-
-        <Grid.Row className="recentButton" >
-          <Button compact size='massive' onClick={handleRefresh}>
-            Recent Barks:
-          </Button>
-
-        {user && (
-            <PostForm />
-        )}
-       </Grid.Row>
-
+      <Grid.Row centered>{user && <PostForm />}</Grid.Row>
       <Grid.Row>
         {loading ? (
           <h1>Loading posts..</h1>

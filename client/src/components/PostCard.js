@@ -27,7 +27,7 @@ export default function PostCard({
       <Card.Content extra>
         <Like user={user} post={{ id, likes, likeCount }} />
         <Button labelPosition="right" as={NavLink} to={`/posts/${id}`}>
-          <Button basic>
+          <Button color="blue" basic>
             <Icon name="comments" />
           </Button>
           <Label basic color="blue" pointing="left">

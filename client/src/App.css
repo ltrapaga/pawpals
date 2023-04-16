@@ -19,7 +19,7 @@ height: 45px;
 }
 
 .ui.menu .item {
-color: #2185d0;
+color: #dadada;
 }
 
 .post-content {
@@ -34,14 +34,31 @@ border-radius: 0.7rem;
   border-radius: 3rem;
 }
 
+.ui.basic.label{
+  color: #f2711c;
+  background-color: beige;
+}
+.ui.basic.button, .ui.basic.buttons .button{
+  color: #f2711c!important;
+}
 .ui.form input:not([type]), .ui.form input[type=date], .ui.form input[type=datetime-local], .ui.form input[type=email], .ui.form input[type=file], .ui.form input[type=number], .ui.form input[type=password], .ui.form input[type=search], .ui.form input[type=tel], .ui.form input[type=text], .ui.form input[type=time], .ui.form input[type=url] {
-  border-radius: 3rem;
-  background-color: #616060 
+  border-radius: 3rem !important;
+  background-color: #ffffff 
 }
 
 .ui.form input:not([type]), .ui.form input[type=date], .ui.form input[type=datetime-local], .ui.form input[type=email], .ui.form input[type=file], .ui.form input[type=number], .ui.form input[type=password], .ui.form input[type=search], .ui.form input[type=tel], .ui.form input[type=text], .ui.form input[type=time], .ui.form input[type=url] {
 padding: 1rem 3rem;
 font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ui.labeled.button>.button {
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+}
+
+.ui.labeled.button>.label {
+  border-bottom-right-radius: 2rem;
+    border-top-right-radius: 2rem;
 }
 
 .ui.menu .yellow.active.item, .ui.yellow.menu .active.item {
@@ -75,6 +92,14 @@ body {
   text-align: center;
 }
 
+.ui.grid>.row {
+  justify-content: center;
+}
+
+img{
+  border-radius: 0.5rem;
+}
+
 .ui.form .fields {
   display: inline-flex;
   flex-direction: unset;
@@ -83,3 +108,8 @@ body {
   text-align: center;
 }
 
+.ui.form .field>label {
+  color:beige;
+  font-family:'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-size: large;
+}

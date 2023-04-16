@@ -42,7 +42,7 @@ function Like({ user, post: { id, likeCount, likes } }) {
     // The likePost function is called when the button is clicked
     <Button as="div" labelPosition="right" onClick={likePost}>
       {/* <popup content={liked ? 'Unlike' : 'Like'}>*/}
-      {likeButton}
+      {likeButton} 
      {/*</Button> </popup> */}
      {/* Display the number of likes */}
       <Label basic pointing="left">

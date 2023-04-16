@@ -30,7 +30,7 @@ export default function PostCard({
         <Like user={user} post={{ id, likes, likeCount }} />
         {/* <popup content="Comment on post"> */}
         <Button labelPosition="right" as={NavLink} to={`/posts/${id}`}>
-          <Button  basic>
+          <Button color="blue" basic>
             <Icon name="comments" />
           </Button>
           {/* Display the number of comments */}

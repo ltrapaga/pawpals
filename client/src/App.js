@@ -8,7 +8,7 @@ import './App.css';
 
 import { AuthProvider } from './context/auth';
 
-import MenuBar from './components/MenuBar';
+import PageHeader from './components/PageHeader';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -20,7 +20,7 @@ function App() {
     <AuthProvider>
       <Router>
         <Container> 
-          <MenuBar />
+          <PageHeader />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />

@@ -11,33 +11,33 @@ export default function Login() {
   const context = useContext(AuthContext);
   const [errors, setErrors] = useState({});
 
-  // initialize onChange, onSubmit, and values variables with the custom useForm hook and loginUserCallback function
+  // Initialize onChange, onSubmit, and values variables with the custom useForm hook and loginUserCallback function
   const { onChange, onSubmit, values } = useForm(loginUserCallback, {
     username: "",
     password: "",
   });
-  // initialize navigate variable with useNavigate hook
+  // Initialize navigate variable with useNavigate hook
   const navigate = useNavigate();
 
   const [loginUser, { loading }] = useMutation(LOGIN_USER, {
     // update cache with the user data returned from the login mutation
     update(_, { data: { login: userData } }) {
-      // call the login function from AuthContext to set the user in the global stat
+      // Call the login function from AuthContext to set the user in the global stat
       context.login(userData);
       navigate("/"); // navigate to the home page
     },
-    // handle errors from the login mutation
+    // Handle errors from the login mutation
     onError(err) {
-      // set the errors state variable with the errors returned from the server (if any)
+      // Set the errors state variable with the errors returned from the server (if any)
       setErrors(err?.graphQLErrors[0]?.extensions?.errors || {});
     },
     variables: values, // set the variables for the login mutation with the values from the useForm hook
   });
-  // call the loginUser mutation function
+  // Call the loginUser mutation function
   function loginUserCallback() {
     loginUser();
   }
-  // if the user is already logged in, navigate to the home page; otherwise, display the login form
+  // If the user is already logged in, navigate to the home page; otherwise, display the login form
   return context?.user ? (
     <Navigate replace to="/" />
   ) : (

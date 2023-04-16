@@ -3,7 +3,7 @@ import { Button, Card, Icon, Label, Image } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
 
-import myImage from "../images/dogprofilepic.png";
+import spyroTheDog from "../images/dogprofilepic.png";
 
 import { AuthContext } from "../context/auth";
 import Like from "./Likes";
@@ -17,7 +17,7 @@ export default function PostCard({
   return (
     <Card fluid color="blue">
       <Card.Content>
-        <Image floated="right" size="mini" rounded bordered src={myImage} />
+        <Image floated="right" size="mini" rounded bordered src={spyroTheDog} />
         <Card.Header>{username}</Card.Header>
         <Card.Meta as={NavLink} to={`/posts/${id}`}>
           {formatDistanceToNow(new Date(createdAt), { addSuffix: true })}

@@ -6,7 +6,7 @@ import { useMutation } from '@apollo/client';
 import { useForm } from '../util/hooks';
 import { FETCH_POSTS_QUERY } from '../util/graphql';
 
-function PostForm() {
+export default function PostForm() {
   // Destructuring values, onChange, and onSubmit from the useForm hook
   const { values, onChange, onSubmit } = useForm(createPostCallback, {
     body: ''
@@ -14,7 +14,7 @@ function PostForm() {
 
   const [createPost, { error }] = useMutation(CREATE_POST_MUTATION, {
     variables: values,
-    //Defining an update function to update the cache after the mutation is executed
+    // Update the cache after the mutation is executed
     update(proxy, result) {
         const data = proxy.readQuery({
           query: FETCH_POSTS_QUERY
@@ -86,4 +86,3 @@ const CREATE_POST_MUTATION = gql`
   }
 `;
 
-export default PostForm;

@@ -7,7 +7,7 @@ import App from './App';
 
 // Create a new http link for the Apollo client with the GraphQL server URL
 const httpLink = createHttpLink({
-  uri: 'https://buttsniffer-dog-social-media.herokuapp.com/graphql'
+  uri: 'http://localhost:3001/graphql'
 });
 // Create a new authorization link for the Apollo client to pass the token with every request
 const authLink = setContext(() => {

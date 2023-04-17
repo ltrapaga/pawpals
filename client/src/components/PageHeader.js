@@ -28,7 +28,7 @@ export default function PageHeader() {
       {/* use NavLink */}
       {/* Display a logout button on the right */}
       <Menu.Item position="right">
-        <Header color="blue">ButtSniffer - The Best Social Media App for Dogs</Header>
+        <Header color="blue">ButtSniffer</Header>
       </Menu.Item>
       <Menu.Menu position="right">
         <Menu.Item name="logout" onClick={logout} />
@@ -45,8 +45,8 @@ export default function PageHeader() {
         exact="true"
         to="/" // add the `exact` prop to match only exact path
       />
-        <Menu.Item centered>
-        <h1>Buttsniffer</h1>
+        <Menu.Item>
+        <Header>Buttsniffer</Header>
       </Menu.Item>
 
       <Menu.Menu position="right">

@@ -20,6 +20,7 @@ height: 45px;
 
 .ui.menu .item {
 color: #dadada!important;
+line-height: 1;
 }
 
 .post-content {
@@ -32,6 +33,14 @@ border-radius: 0.7rem;
 
 .ui.button {
   border-radius: 3rem;
+}
+
+.ui.header:last-child {
+  color: #fff;
+}
+
+.ui.header {
+  line-height: 0.8;
 }
 
 i.icon.paw:before{

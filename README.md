@@ -1,4 +1,4 @@
-# ButtSniffer - A Social Media Application for Dogs
+# PawPals - A Social Media Application for Dogs
 
 ## Description
 
